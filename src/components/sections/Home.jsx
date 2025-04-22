@@ -5,18 +5,18 @@ const Home = () => {
             id="home"
             className="w-full flex mb-20">
             <div className="flex flex-col items-start space-y-4 text-left  w-full">
-                <h1 className="text-8xl font-bold text-gray-500">ABOUT ME</h1>
+                <h1 className="text-8xl font-bold text-[#40454B]">ABOUT ME</h1>
                 <div className="w-full border-b-4 border-red-500"></div>
                 <p className="text-justify text-white">
                     I am a Software Developer with experience in web and mobile app development, cloud technologies, and DevOps practices. I have a strong passion for solving problems, learning new technologies, and building scalable, high-performance applications. With a solid understanding of version control and deployment, I thrive in dynamic environments and continuously work on improving software reliability and efficiency.
                 </p>
                 <div className="flex items-center justify-start space-x-6">
                     <div className="text-gray-500 flex flex-col items-center">
-                        <span className="text-6xl font-bold text-gray-500">+1</span>
+                        <span className="text-6xl font-bold text-[#40454B]">+1</span>
                         <p>YEAR OF EXPERIENCE</p>
                     </div>
                     <div className="text-gray-500 flex flex-col items-center">
-                        <span className="text-6xl font-bold text-gray-500">5</span>
+                        <span className="text-6xl font-bold text-[#40454B]">5</span>
                         <p>MAJOR PROJECTS</p>
                     </div>
                 </div>

@@ -1,78 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 
 const experiences = [
-    { time: "Present", title: "Game Programmer Intern", company: "Games for Love", duration: "2025 - Present", description: "Contributed to the development of blockchain solutions, focusing on smart contracts and decentralized applications." },
-    { time: "2024 - 2025", title: "UX Designer", company: "DePaul University", duration: "2024 - 2025", description: "Worked on software development projects, collaborating with cross-functional teams to deliver high-quality solutions." },
-    { time: "", title: "Masters in Computer Science", company: "DePaul University", duration: "2023 - 2025", description: "Pursuing a Master's degree in Computer Science, specializing in software engineering and data analytics." },
-    { time: "2022 - 2023", title: "Junior Technical Associate", company: "Teradata", duration: "2022 - 2023", description: "Worked on data processing and analytics, optimizing database performance, and supporting client solutions." },
-    { time: "2019 - 2022", title: "Android Developer Intern", company: "SteelBrik Software", duration: "2021 - 2022", description: "Developed Android applications, improved UI/UX, and optimized application performance." },
-    { time: "", title: "Bachelor's in Computer Science", company: "Mumbai University", duration: "2019 - 2022", description: "Completed a Bachelor's degree in Computer Science, focusing on software development and data structures." }
+  {
+    duration: "Present",
+    title: "Game Programmer Intern",
+    company: "Games for Love",
+    description:"Working in Unity (C#) to develop core game mechanics, integrate UI assets, and improve cross-platform performance. Focused on AI behavior, physics, and player interaction to enhance gameplay stability and responsiveness.",
+  },
+  {
+    duration: "2023 - 2025",
+    title: "UX Designer",
+    company: "DePaul University",
+    description: "Improved the Mission Master web experience through user research and UI updates. Used React, HTML, and CSS to design accessible, responsive components with an emphasis on student engagement and usability.",
+  },
+  {
+    title: "MS in Computer Science",
+    company: "DePaul University",
+    description: "Specialized in full-stack development, cloud computing, Android/iOS app development, and DevOps practices.",
+  },
+  {
+    duration: "2022 - 2023",
+    title: "Junior Technical Associate",
+    company: "Teradata",
+    description: "Contributed to MDM UI development with Java and SQL. Built ETL workflows to clean and transform large datasets, automated deployment via CI/CD pipelines, and conducted E2E testing on AWS CloudLake environments.",
+  },
+  {
+    duration: "2019 - 2022",
+    title: "Androide Developer Intern",
+    company: "SteelBrick",
+    description: "Developed features for Android apps using Kotlin and Java. Improved app speed by 25% with UI refactoring and async operations, and integrated CI/CD tools for faster deployment and testing.",
+  },
+  {
+    title: "Bachelor in Computer Engineering",
+    company: "Mumbai University",
+    description: "Gained a strong foundation in algorithms, software engineering, object-oriented programming, and systems design.",
+  },
 ];
 
 const Experience = () => {
-    const [scrollY, setScrollY] = useState(0);
-    const [visibleItems, setVisibleItems] = useState([]);
+  return (
+    <section id="experience" className="relative w-full min-h-screen pt-24">
+      <h1 className="text-8xl font-bold text-[#40454B] mb-10">EXPERIENCE</h1>
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-            const visible = [];
-            document.querySelectorAll(".timeline-dot").forEach((dot, index) => {
-                const rect = dot.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.5) {
-                    visible.push(index);
-                }
-            });
-            setVisibleItems(visible);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+      <div className="relative flex flex-col">
+        <div className="absolute left-[7px] w-[2px] h-full bg-[#FA1C50]" />
 
-    return (
-        <section id="experience" className="w-full min-h-screen pt-24">
-            <h1 className="text-6xl md:text-8xl font-bold text-gray-500 mb-10">EXPERIENCE</h1>
-            <div className="flex flex-col w-full relative mx-auto">
-                {/* Static timeline line */}
-                <div className="absolute w-1 bg-gray-300 left-2 top-0 h-full"></div>
+        {experiences.map((experience, index) => {
+          const hasNextDot = experiences[index + 1]?.duration;
 
-                {/* Animated growing timeline line */}
-                <motion.div
-                    className="absolute w-1 bg-red-500 left-2 top-0 origin-top"
-                    animate={{ height: scrollY + "px" }}
-                    transition={{ ease: "linear", duration: 0.2 }}
-                ></motion.div>
+          return (
+            <div
+              key={index}
+              className={`flex flex-col ${
+                hasNextDot ? "mb-10" : "mb-3"
+              }`}
+            >
+              {experience.duration && (
+                <div className="flex flex-row items-center mb-2">
+                  <div className="bg-[#FA1C50] rounded-full w-4 h-4"></div>
+                  <h2 className="ml-[8px] text-4xl font-bold text-gray-600">
+                    {experience.duration}
+                  </h2>
+                </div>
+              )}
 
-                {experiences.map((experience, index) => (
-                    <div key={index} className="flex mb-16 relative items-center">
-                        {/* Timeline Dot & Time */}
-                        <div className="flex flex-col items-center mr-10 relative z-10">
-                            <motion.div
-                                className="h-5 w-5 rounded-full timeline-dot"
-                                animate={{ backgroundColor: visibleItems.includes(index) ? "#ef4444" : "#d1d5db" }}
-                                transition={{ duration: 0.3 }}
-                            ></motion.div>
-                            {/* Time positioned beside the dot */}
-                        </div>
-
-                        <h1 className="  text-gray-500 text-lg mr-10 ">{experience.time}</h1>
-                        {/* Experience Card (Only visible when line crosses dot) */}
-                        <motion.div
-                            className="flex-1 text-left border-2 rounded-lg border-gray-300 p-6 opacity-0"
-                            animate={{ opacity: visibleItems.includes(index) ? 1 : 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h2 className="text-2xl md:text-4xl font-semibold">{experience.title}</h2>
-                            <p className="text-lg text-gray-500">{experience.company}</p>
-                            <p className="text-lg text-gray-500 mb-2">{experience.duration}</p>
-                            <p className="text-lg text-gray-500">{experience.description}</p>
-                        </motion.div>
-                    </div>
-                ))}
+              <div className="ml-[24px] flex flex-col bg-[#16181A] rounded p-2  hover:bg-[#26282A] transition-colors duration-500 ease-in-out">
+                <h2 className="text-xl font-bold text-white">
+                  {experience.title}
+                </h2>
+                <h3 className="text-lg text-gray-400 mb-2">{experience.company}</h3>
+                <p className="text-gray-400 text-justify">{experience.description}</p>
+              </div>
             </div>
-        </section>
-    );
+          );
+        })}
+      </div>
+    </section>
+  );
 };
 
 export default Experience;
+

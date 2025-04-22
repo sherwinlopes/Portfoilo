@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import Home from "./components/sections/Home";
 import Experience from './components/sections/Experience';
+import Projects from './components/sections/Projects'
 
 export default function App() {
   return (
@@ -14,8 +15,10 @@ export default function App() {
       <div className="ml-[400px] ">
         <Home />
         <Experience />
+        <Projects />
       </div>
     </div>
+
 
   );
 }
