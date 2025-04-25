@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -9,8 +8,8 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
-      backgroundImage: {
-        'radial': 'radial-gradient(var(--tw-gradient-stops))',
+      animation: {
+        'spin-slower': 'spin 15s linear infinite',
       },
     },
   },
