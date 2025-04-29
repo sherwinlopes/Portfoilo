@@ -3,7 +3,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import gmail from '../assets/gmail-logo.png';
 import linkedin from '../assets/linkedin-logo.png';
 import github from '../assets/github-logo.png';
-import profileImg from '../assets/profile-img.png';
+import profileImg from '../assets/github-logo.png';
 
 const Card = () => {
   return (

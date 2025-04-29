@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 export default {
   content: [
     "./index.html",
@@ -8,9 +8,6 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
-      },
-      backgroundImage: {
-        'radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },

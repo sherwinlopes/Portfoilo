@@ -64,3 +64,22 @@ button:hover {
     background-color: #f9f9f9;
   }
 }
+
+@keyframes rotate-conic {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+.animate-conic {
+  animation: rotate-conic 8s linear infinite;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
