@@ -40,7 +40,7 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div key={index} className="relative">
             <div
-              className="absolute -inset-[2px] rounded-xl blur-lg opacity-50 animate-conic"
+              className="absolute -inset-[2px] rounded-xl blur-md opacity-50 animate-conic"
               style={{
                 '--angle': '0deg',
                 backgroundImage: 'conic-gradient(from var(--angle),#0083ff,#00fffb,#0083ff,#0083ff)',
